@@ -1,0 +1,9 @@
+{% extends 'home.html' %}
+{% block content %}
+{% for post_id in posts %}
+      <a href="{{ url_for('show_post', post_id=post_id) }}">Post {{ post_id }}</a>
+      <br>
+{% endfor %}
+<br>
+<a href="{{ url_for('home') }}">Back to home</a>
+{% endblock %}

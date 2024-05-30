@@ -1,0 +1,5 @@
+{% extends 'home.html' %}
+{% block content %}
+<h2>Hello, {{ username }}!</h2>
+<a href="{{ url_for('show_users_profile') }}">Back to users</a>
+{% endblock %}

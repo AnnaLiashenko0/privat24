@@ -1,0 +1,11 @@
+{% extends 'home.html' %}
+{% block content %}
+<ul>
+{% for username in users %}
+   <li>
+      <a href="{{ url_for('hello_user', username=username) }}">{{ username }}</a>
+   </li>
+{% endfor %}
+</ul>
+{% endblock %}
+
