@@ -1,11 +1,11 @@
-from flask import render_template, redirect, url_for, session
+from flask import render_template, redirect, url_for, session, flash
 from flask import Flask, request
 app = Flask(__name__)
 
 
 @app.route("/")
 def home():
-    return render_template('home.html')
+    return render_template('_base.html')
 
 
 @app.route("/posts")
@@ -14,12 +14,13 @@ def posts():
 
 
 user_database = {
-    "vasyl": "123456",
-    "vlad": "1",
-    "anya": "2"
+    "vasyl": "1",
+    "vlad": "12",
+    "anya": "123"
 }
 
 app.secret_key = 'KEY'
+
 
 @app.route('/posts/<int:post_id>')
 def show_post(post_id):
@@ -33,14 +34,16 @@ def login():
         password = request.form['password']
         if username in user_database and user_database[username] == password:
             session['username'] = username
+            flash("You successfuly logged")
             return redirect(url_for('hello_user', username=request.form['username']))
 
     return render_template('login.html')
 
 
-@app.route("/logout")
+@app.route('/logout')
 def logout():
     session.pop('username', None)
+
     return redirect(url_for('home'))
 
 
@@ -55,8 +58,6 @@ def register():
 def hello_user(username):
     if 'username' in session and session['username'] == username:
         return render_template('hello_user.html', username=username)
-
-    return redirect(url_for('login'))
 
 
 @app.route('/users')

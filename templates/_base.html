@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Privat24!{% endblock %}</title>
+</head>
+<body>
+    <div>
+        <h1>Privat24!</h1>
+      <ul>
+          <li> <a href="{{ url_for('posts') }}">Go to posts!</a></li>
+          <li> <a href="{{ url_for('show_users_profile') }}">Go to users!</a> </li>
+          {% if 'username' in session %}
+          <li><a href="{{ url_for('logout') }}">Logout</a></li>
+
+          {% else %}
+          <li> <a href="{{ url_for('login') }}">Let's Login!</a> </li>
+          <li> <a href="{{ url_for('register') }}">Let's Sign up!</a> </li>
+          {% endif %}
+          <li> <a href="{{ url_for('about') }}">About</a> </li>
+      </ul>
+        <header>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <ul class=flashes>
+                {% for category, message in messages %}
+                  <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+        </header>
+    </div>
+{% block content %}{% endblock %}
+</body>
+</html>
