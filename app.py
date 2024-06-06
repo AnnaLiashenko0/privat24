@@ -15,8 +15,8 @@ def posts():
 
 user_database = {
     "vasyl": "123456",
-    "vlad": "123",
-    "anya": "1234"
+    "vlad": "1",
+    "anya": "2"
 }
 
 app.secret_key = 'KEY'
