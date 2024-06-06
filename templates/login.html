@@ -1,10 +1,13 @@
 {% extends 'home.html' %}
 {% block content %}
-<form>
- <h1>Login!</h1>
- Username:<br>
-  <input type='text' name='firstname'><br>
- Password:<br>
-  <input type='password' name='lastname'>
+<form method='post'>
+ <label for="username">Username:</label>
+  <input id = 'username' type='text' name='username' required><br>
+
+ <label for="password">Password:</label>
+  <input id = 'password' type='password' name='password' required><br>
+
+ <button type='submit'>Submit</button>
 </form>
+<a href="{{ url_for('home') }}">Back to title</a>
 {% endblock %}
