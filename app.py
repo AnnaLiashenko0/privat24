@@ -38,6 +38,12 @@ def login():
     return render_template('login.html')
 
 
+@app.route("/logout")
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('home'))
+
+
 @app.route('/register', methods=['GET',  'POST'])
 def register():
     if request.method == "POST":
@@ -49,6 +55,8 @@ def register():
 def hello_user(username):
     if 'username' in session and session['username'] == username:
         return render_template('hello_user.html', username=username)
+
+    return redirect(url_for('login'))
 
 
 @app.route('/users')
