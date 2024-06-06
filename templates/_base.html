@@ -12,7 +12,7 @@
           <li> <a href="{{ url_for('show_users_profile') }}">Go to users!</a> </li>
           {% if 'username' in session %}
           <li><a href="{{ url_for('logout') }}">Logout</a></li>
-
+          <li><a href="{{  url_for('hello_user',username=session.username)  }}">Profile</a></li>
           {% else %}
           <li> <a href="{{ url_for('login') }}">Let's Login!</a> </li>
           <li> <a href="{{ url_for('register') }}">Let's Sign up!</a> </li>

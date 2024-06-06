@@ -9,5 +9,6 @@
 {% endfor %}
    <br><a href="{{ url_for('home') }}">Back to Privat24</a>
    <br><a href="{{  url_for('hello_user',username=session.username)  }}">Profile</a>
+
 </ul>
 {% endblock %}
