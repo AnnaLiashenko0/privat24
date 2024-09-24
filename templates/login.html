@@ -1,14 +1,33 @@
 {% extends 'home.html' %}
 {% block content %}
-<form method='post'>
- <h1>Login</h1>
- <label for="username">Username:</label><br>
-  <input id = 'username' type='text' name='username' required><br>
+<main class="form-signin w-100 m-auto">
+    <form method="post">
+        <img class="mb-4" src="{{ url_for('static', filename='assets/images/paypal.svg') }}" alt="" width="275"
+             height="57">
+        <h1 class="h3 mb-3 fw-normal">Sign in</h1>
 
- <label for="password">Password:</label><br>
-  <input id = 'password' type='password' name='password' required><br>
+        <div class="form-floating">
+            <input type="text" name="username" class="form-control" id="username">
+            <label for="username">Username</label><br>
+            {% for error in form.username.errors %}
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="password" name="password">
+            <label for="password">Password</label>
+            {% for error in form.password.errors %}
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </div>
 
- <button type='submit'>Submit</button>
-</form>
-<a href="{{ url_for('home') }}">Back to title</a>
+        <button class="btn btn-primary w-100 py-2" type="submit">Log in</button>
+        <p class="mt-5 mb-3 text-body-secondary"></p>
+        <a href="{{ url_for('home') }}">Back to home</a>
+    </form>
+</main>
 {% endblock %}
